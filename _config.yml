@@ -20,10 +20,22 @@ description: > # this means to ignore newlines until "baseurl:"
   line in _config.yml. It will appear in your document head meta (for
   Google search results) and in your feed.xml site description.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://signaller-company-33348.netlify.com"
 twitter_username: jekyllrb
 github_username:  jekyll
 
 # Build settings
 markdown: kramdown
 theme: minima
+
+contentful:
+  spaces:
+    - example: # Jekyll _data folder identifier - Required
+        space: ENV_CONTENTFUL_SPACE_ID
+        access_token: ENV_CONTENTFUL_ACCESS_TOKEN
+        cda_query:                  # Optional
+          include: 2
+          limit: 100
+        all_entries: true           # Optional - Defaults to false, only grabbing the amount set on CDA Query
+        all_entries_page_size: 1000 # Optional - Defaults to 1000, maximum amount of entries per CDA Request for all_entries
+        content_types:              # Optional
+          cat: post
